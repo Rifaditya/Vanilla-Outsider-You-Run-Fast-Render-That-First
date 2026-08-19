@@ -1,0 +1,8 @@
+{
+  "gamerule.category.yourunfast:main": "You Run Fast, Render That First",
+  "gamerule.yourunfast:enabled": "Enable velocity-biased chunk prioritization and predictive generation",
+  "gamerule.yourunfast:forward_lead_multiplier": "Forward lead distance multiplier percentage (0-300%)",
+  "gamerule.yourunfast:budget_conservation": "Adaptive rear and lateral chunk ticket budget conservation",
+  "gamerule.yourunfast:min_speed_threshold_pct": "Minimum speed threshold (hundredths of block/tick) to activate forward bias",
+  "gamerule.yourunfast:debug_mode": "Enable verbose diagnostic logging and live status overlay"
+}
