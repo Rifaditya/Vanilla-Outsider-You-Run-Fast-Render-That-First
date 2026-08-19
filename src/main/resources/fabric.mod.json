@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "you-run-fast-render-that-first",
+  "version": "${version}",
+  "name": "You Run Fast, Render That First",
+  "description": "Velocity-biased anisotropic chunk world generation and client meshing prioritization for fast-traveling players.",
+  "authors": [
+    "Dasik (Rifaditya)"
+  ],
+  "contact": {
+    "homepage": "https://modrinth.com/mod/you-run-fast-render-that-first",
+    "sources": "https://github.com/rifaditya/you-run-fast-render-that-first"
+  },
+  "license": "GPL-3.0-only",
+  "icon": "assets/you-run-fast-render-that-first/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.vanillaoutsider.yourunfast.YouRunFastMod"
+    ],
+    "client": [
+      "net.vanillaoutsider.yourunfast.client.YouRunFastClient"
+    ]
+  },
+  "mixins": [
+    "you-run-fast-render-that-first.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.4",
+    "minecraft": ">=26.3-",
+    "fabric-api": "*",
+    "dasik-library": ">=1.8.0"
+  }
+}
