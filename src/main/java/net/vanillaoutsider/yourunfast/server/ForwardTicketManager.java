@@ -6,8 +6,6 @@ import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import java.util.Map;
 import java.util.UUID;
-import net.minecraft.core.Registry;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -22,12 +20,6 @@ import org.slf4j.LoggerFactory;
 
 public final class ForwardTicketManager {
     private static final Logger LOGGER = LoggerFactory.getLogger(ForwardTicketManager.class);
-
-    public static final TicketType FORWARD_PREDICTION = Registry.register(
-            BuiltInRegistries.TICKET_TYPE,
-            "forward_prediction",
-            new TicketType(60L, TicketType.FLAG_LOADING)
-    );
 
     // Zero-allocation primitive bit-packed ticket registry
     private static final Map<UUID, VelocityCalculator> PLAYER_VELOCITY = new Object2ObjectOpenHashMap<>();
@@ -156,7 +148,7 @@ public final class ForwardTicketManager {
         while (iterator.hasNext()) {
             long packedPos = iterator.nextLong();
             if (!newForwardChunks.contains(packedPos)) {
-                level.getChunkSource().removeTicketWithRadius(FORWARD_PREDICTION, ChunkPos.unpack(packedPos), 1);
+                level.getChunkSource().removeTicketWithRadius(TicketType.PLAYER_LOADING, ChunkPos.unpack(packedPos), 1);
                 iterator.remove();
             }
         }
@@ -166,7 +158,7 @@ public final class ForwardTicketManager {
         while (newIterator.hasNext()) {
             long packedPos = newIterator.nextLong();
             if (activeTickets.add(packedPos)) {
-                level.getChunkSource().addTicketWithRadius(FORWARD_PREDICTION, ChunkPos.unpack(packedPos), 1);
+                level.getChunkSource().addTicketWithRadius(TicketType.PLAYER_LOADING, ChunkPos.unpack(packedPos), 1);
             }
         }
 
@@ -200,7 +192,7 @@ public final class ForwardTicketManager {
         if (tickets != null && level != null) {
             LongIterator it = tickets.iterator();
             while (it.hasNext()) {
-                level.getChunkSource().removeTicketWithRadius(FORWARD_PREDICTION, ChunkPos.unpack(it.nextLong()), 1);
+                level.getChunkSource().removeTicketWithRadius(TicketType.PLAYER_LOADING, ChunkPos.unpack(it.nextLong()), 1);
             }
         }
     }
@@ -209,7 +201,7 @@ public final class ForwardTicketManager {
         if (level != null) {
             LongIterator it = tickets.iterator();
             while (it.hasNext()) {
-                level.getChunkSource().removeTicketWithRadius(FORWARD_PREDICTION, ChunkPos.unpack(it.nextLong()), 1);
+                level.getChunkSource().removeTicketWithRadius(TicketType.PLAYER_LOADING, ChunkPos.unpack(it.nextLong()), 1);
             }
         }
         tickets.clear();

@@ -5,21 +5,48 @@ All notable changes to **You Run Fast, Render That First** will be documented in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.3+26.3] - 2026-08-19
+## [1.0.4+26.3] - 2026-08-19
+
+### Fixed
+- Fixed runtime server tick crash (`IllegalStateException: Registry is already frozen`) by replacing dynamic `TicketType` registry registration with vanilla's built-in `TicketType.PLAYER_LOADING`.
+
+---
+
+## [1.0.4+26.2] - 2026-08-19
+
+### Fixed
+- Fixed runtime server tick crash (`IllegalStateException: Registry is already frozen`) by replacing dynamic `TicketType` registry registration with vanilla's built-in `TicketType.PLAYER_LOADING`.
+
+---
+
+## [1.0.4+26.1.2] - 2026-08-19
+
+### Fixed
+- Fixed runtime server tick crash (`IllegalStateException: Registry is already frozen`) by replacing dynamic `TicketType` registry registration with vanilla's built-in `TicketType.PLAYER_LOADING`.
+
+---
+
+## [1.0.3+26.3] - 2026-08-19 [BROKEN / CRASHED ON STARTUP]
+
+> **Post-Mortem**: Crashed on server tick with `IllegalStateException: Registry is already frozen (trying to add key ResourceKey[minecraft:ticket_type / minecraft:forward_prediction])`. Superseded by `1.0.4+26.3`.
 
 ### Fixed
 - Fixed critical startup crash (`IllegalClassLoadError`) caused by top-level mixin package definition claiming entrypoint classes; properly scoped mixin package to `net.vanillaoutsider.yourunfast.client.mixin`.
 
 ---
 
-## [1.0.3+26.2] - 2026-08-19
+## [1.0.3+26.2] - 2026-08-19 [BROKEN / CRASHED ON STARTUP]
+
+> **Post-Mortem**: Crashed on server tick with `IllegalStateException: Registry is already frozen (trying to add key ResourceKey[minecraft:ticket_type / minecraft:forward_prediction])`. Superseded by `1.0.4+26.2`.
 
 ### Fixed
 - Fixed critical startup crash (`IllegalClassLoadError`) caused by top-level mixin package definition claiming entrypoint classes; properly scoped mixin package to `net.vanillaoutsider.yourunfast.client.mixin`.
 
 ---
 
-## [1.0.3+26.1.2] - 2026-08-19
+## [1.0.3+26.1.2] - 2026-08-19 [BROKEN / CRASHED ON STARTUP]
+
+> **Post-Mortem**: Crashed on server tick with `IllegalStateException: Registry is already frozen (trying to add key ResourceKey[minecraft:ticket_type / minecraft:forward_prediction])`. Superseded by `1.0.4+26.1.2`.
 
 ### Fixed
 - Fixed critical startup crash (`IllegalClassLoadError`) caused by top-level mixin package definition claiming entrypoint classes; properly scoped mixin package to `net.vanillaoutsider.yourunfast.client.mixin`.
