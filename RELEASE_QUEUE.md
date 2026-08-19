@@ -8,9 +8,9 @@ This file tracks the queued releases and compilation status for **You Run Fast, 
 
 | Version | Minecraft Target | Status | JAR Output | Notes |
 | :--- | :--- | :--- | :--- | :--- |
-| `1.0.6+26.1.2` | `MC 26.1.2` | `QUEUED` | `vanilla-outsider-you-run-fast-render-that-first-1.0.6+26.1.2.jar` | Exact Position Bytecode Descriptor Hotfix |
-| `1.0.6+26.2` | `MC 26.2` | `QUEUED` | `vanilla-outsider-you-run-fast-render-that-first-1.0.6+26.2.jar` | Exact Position Bytecode Descriptor Hotfix |
-| `1.0.6+26.3` | `MC 26.3` | `QUEUED` | `vanilla-outsider-you-run-fast-render-that-first-1.0.6+26.3.jar` | Exact Position Bytecode Descriptor Hotfix |
+| `1.0.6+26.1.2` | `MC 26.1.2` | `RELEASED` | `vanilla-outsider-you-run-fast-render-that-first-1.0.6+26.1.2.jar` | Exact Position Bytecode Descriptor Hotfix |
+| `1.0.6+26.2` | `MC 26.2` | `RELEASED` | `vanilla-outsider-you-run-fast-render-that-first-1.0.6+26.2.jar` | Exact Position Bytecode Descriptor Hotfix |
+| `1.0.6+26.3` | `MC 26.3` | `RELEASED` | `vanilla-outsider-you-run-fast-render-that-first-1.0.6+26.3.jar` | Exact Position Bytecode Descriptor Hotfix |
 | `1.0.5+26.1.2` | `MC 26.1.2` | `BROKEN` | `vanilla-outsider-you-run-fast-render-that-first-1.0.5+26.1.2.jar` | Crashed on render (InjectionError descriptor mismatch) |
 | `1.0.5+26.2` | `MC 26.2` | `BROKEN` | `vanilla-outsider-you-run-fast-render-that-first-1.0.5+26.2.jar` | Crashed on render (InjectionError descriptor mismatch) |
 | `1.0.5+26.3` | `MC 26.3` | `BROKEN` | `vanilla-outsider-you-run-fast-render-that-first-1.0.5+26.3.jar` | Crashed on render (InjectionError descriptor mismatch) |
