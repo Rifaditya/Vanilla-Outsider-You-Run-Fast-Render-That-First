@@ -2,7 +2,7 @@
 package net.vanillaoutsider.yourunfast.client.mixin;
 
 import net.minecraft.client.renderer.chunk.SectionTaskDynamicQueue;
-import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.world.phys.Vec3;
 import net.vanillaoutsider.yourunfast.math.AnisotropicDistanceHelper;
 import org.spongepowered.asm.mixin.Mixin;
@@ -16,10 +16,10 @@ public abstract class SectionTaskDynamicQueueMixin {
             method = "poll",
             at = @At(
                     value = "INVOKE",
-                    target = "Lnet/minecraft/core/BlockPos;distToCenterSqr(Lnet/minecraft/world/phys/Vec3;)D"
+                    target = "Lnet/minecraft/core/Vec3i;distToCenterSqr(Lnet/minecraft/world/phys/Vec3;)D"
             )
     )
-    private double youRunFast$biasedDistance(BlockPos origin, Vec3 cameraPos) {
+    private double youRunFast$biasedDistance(Vec3i origin, Vec3 cameraPos) {
         return AnisotropicDistanceHelper.calculateBiasedDistanceSqr(origin, cameraPos);
     }
 }

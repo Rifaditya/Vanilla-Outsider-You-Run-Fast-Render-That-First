@@ -5,21 +5,48 @@ All notable changes to **You Run Fast, Render That First** will be documented in
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.4+26.3] - 2026-08-19
+## [1.0.5+26.3] - 2026-08-19
+
+### Fixed
+- Fixed client render frame crash (`InjectionError: Critical injection failure`) by correcting `@Redirect` opcode target to `Vec3i.distToCenterSqr` (the bytecode declaring class).
+
+---
+
+## [1.0.5+26.2] - 2026-08-19
+
+### Fixed
+- Fixed client render frame crash (`InjectionError: Critical injection failure`) by correcting `@Redirect` opcode target to `Vec3i.distToCenterSqr` (the bytecode declaring class).
+
+---
+
+## [1.0.5+26.1.2] - 2026-08-19
+
+### Fixed
+- Fixed client render frame crash (`InjectionError: Critical injection failure`) by correcting `@Redirect` opcode target to `Vec3i.distToCenterSqr` (the bytecode declaring class).
+
+---
+
+## [1.0.4+26.3] - 2026-08-19 [BROKEN / CRASHED ON CLIENT RENDER]
+
+> **Post-Mortem**: Crashed on client render frame with `InjectionError: Critical injection failure in SectionTaskDynamicQueueMixin (0/1 succeeded, scanned 0 targets)` targeting `BlockPos.distToCenterSqr` instead of declaring class `Vec3i.distToCenterSqr`. Superseded by `1.0.5+26.3`.
 
 ### Fixed
 - Fixed runtime server tick crash (`IllegalStateException: Registry is already frozen`) by replacing dynamic `TicketType` registry registration with vanilla's built-in `TicketType.PLAYER_LOADING`.
 
 ---
 
-## [1.0.4+26.2] - 2026-08-19
+## [1.0.4+26.2] - 2026-08-19 [BROKEN / CRASHED ON CLIENT RENDER]
+
+> **Post-Mortem**: Crashed on client render frame with `InjectionError: Critical injection failure in SectionTaskDynamicQueueMixin (0/1 succeeded, scanned 0 targets)` targeting `BlockPos.distToCenterSqr` instead of declaring class `Vec3i.distToCenterSqr`. Superseded by `1.0.5+26.2`.
 
 ### Fixed
 - Fixed runtime server tick crash (`IllegalStateException: Registry is already frozen`) by replacing dynamic `TicketType` registry registration with vanilla's built-in `TicketType.PLAYER_LOADING`.
 
 ---
 
-## [1.0.4+26.1.2] - 2026-08-19
+## [1.0.4+26.1.2] - 2026-08-19 [BROKEN / CRASHED ON CLIENT RENDER]
+
+> **Post-Mortem**: Crashed on client render frame with `InjectionError: Critical injection failure in CompileTaskDynamicQueueMixin (0/1 succeeded, scanned 0 targets)` targeting `BlockPos.distToCenterSqr` instead of declaring class `Vec3i.distToCenterSqr`. Superseded by `1.0.5+26.1.2`.
 
 ### Fixed
 - Fixed runtime server tick crash (`IllegalStateException: Registry is already frozen`) by replacing dynamic `TicketType` registry registration with vanilla's built-in `TicketType.PLAYER_LOADING`.
