@@ -1,8 +1,8 @@
 // Copyright (C) 2026 Dasik (Rifaditya) | GNU GPLv3
 package net.vanillaoutsider.yourunfast.math;
 
-import net.minecraft.core.Vec3i;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Position;
 import net.vanillaoutsider.yourunfast.client.ClientVelocityTracker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,14 +14,14 @@ public final class AnisotropicDistanceHelper {
     private AnisotropicDistanceHelper() {
     }
 
-    public static double calculateBiasedDistanceSqr(Vec3i origin, Vec3 cameraPos) {
+    public static double calculateBiasedDistanceSqr(BlockPos origin, Position cameraPos) {
         if (origin == null || cameraPos == null) {
             return Double.MAX_VALUE;
         }
 
-        double deltaX = ((double) origin.getX() + 0.5) - cameraPos.x;
-        double deltaY = ((double) origin.getY() + 0.5) - cameraPos.y;
-        double deltaZ = ((double) origin.getZ() + 0.5) - cameraPos.z;
+        double deltaX = ((double) origin.getX() + 0.5) - cameraPos.x();
+        double deltaY = ((double) origin.getY() + 0.5) - cameraPos.y();
+        double deltaZ = ((double) origin.getZ() + 0.5) - cameraPos.z();
 
         double euclideanDistSqr = deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ;
 
