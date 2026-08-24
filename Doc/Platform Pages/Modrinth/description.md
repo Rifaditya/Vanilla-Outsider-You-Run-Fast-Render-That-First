@@ -42,9 +42,10 @@ Automatically detects and scales with all locomotion styles:
 - 🪽 **Elytra Gliding**: Rocket boosts and steep diving.
 - 💨 **Wind Charges & Modded Vehicles**: Seamless physics integration.
 
-### 🌫️ 100% Vanilla Fog & Aesthetics Preservation
-- **Uncompromised Visuals**: Modifies zero shaders, lighting pipelines, or atmospheric fog distances.
-- **Seamless Immersion**: All optimizations happen silently beneath the surface—your visual experience remains 100% vanilla.
+### 🌫️ 100% Vanilla Fog, Shaders & Aesthetics Preservation
+- **Uncompromised Visuals**: Modifies zero shaders, lighting models, rendering pipelines, or atmospheric fog distances.
+- **Universal Shaders Compatibility**: Because the mod purely optimizes CPU task ordering without touching graphical shaders or vertex formats, it is 100% compatible with shaderpacks (**Iris**, **Oculus**, **Canvas**), performance engines (**Sodium**, **ImmediatelyFast**, **Lithium**, **Nvidium**, **Distant Horizons**, **Bobby**), and custom resource packs.
+- **Seamless Immersion**: All optimizations happen silently beneath the surface—your visual aesthetic and atmosphere remain 100% vanilla.
 
 ---
 
@@ -81,6 +82,7 @@ Customize behavior per-world with standard gamerules:
 
 ## 🔌 Compatibility & Installation
 
+- **🎨 Shaders & Rendering Engines**: 100% compatible with Iris, Sodium, ImmediatelyFast, Lithium, Distant Horizons, Bobby, and custom shaderpacks.
 - **🏠 Singleplayer**: Full synergy (client meshing priority + internal server predictive generation).
 - **💻 Client-Only on Vanilla Servers**: Meshes received chunks in your forward velocity cone with top priority.
 - **🖥️ Server-Only with Vanilla Clients**: Predictively generates and loads chunks ahead of fast players on the server, eliminating void walls for all connecting players.
