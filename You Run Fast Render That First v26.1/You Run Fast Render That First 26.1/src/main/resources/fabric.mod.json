@@ -9,7 +9,8 @@
   ],
   "contact": {
     "homepage": "https://modrinth.com/mod/you-run-fast-render-that-first",
-    "sources": "https://github.com/rifaditya/you-run-fast-render-that-first"
+    "sources": "https://github.com/Rifaditya/Vanilla-Outsider-You-Run-Fast-Render-That-First",
+    "issues": "https://github.com/Rifaditya/Vanilla-Outsider-You-Run-Fast-Render-That-First/issues"
   },
   "license": "GPL-3.0-only",
   "icon": "assets/you-run-fast-render-that-first/icon.png",
