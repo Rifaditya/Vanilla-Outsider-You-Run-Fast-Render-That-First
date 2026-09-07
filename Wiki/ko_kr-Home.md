@@ -1,36 +1,68 @@
-# 🚀 빠르게 달린다면, 그곳을 먼저 렌더링하라 (You Run Fast, Render That First)
+# 🚀 You Run Fast, Render That First — 공식 위키
 
 🌐 **Languages**: [[🇺🇸 English|Home]] | [[🇨🇳 简体中文|zh_cn-Home]] | [[🇭🇰 繁體中文|zh_tw-Home]] | [[🇷🇺 Русский|ru_ru-Home]] | [[🇪🇸 Español|es_es-Home]] | [[🇩🇪 Deutsch|de_de-Home]] | [[🇫🇷 Français|fr_fr-Home]] | [[🇧🇷 Português|pt_br-Home]] | [[🇯🇵 日本語|ja_jp-Home]] | [[🇮🇩 Bahasa Indonesia|id_id-Home]] | [[🇰🇷 한국어|ko_kr-Home]]
 
-> 📌 **Repository Source Disclaimer**: The documentation in this Wiki reflects the **current source code state in the repository**, which may include recent unreleased commits or developmental features ahead of public release builds on CurseForge and Modrinth.
+> 📌 **저장소 소스 코드 면책 조항**: 본 위키 문서는 **저장소의 현재 소스 코드 상태**를 반영하며, CurseForge 및 Modrinth의 공개 릴리스 빌드보다 앞선 미출시 커밋이나 개발 중인 기능을 포함할 수 있습니다.
 
 ---
 
-## 📖 속도 벡터 기반 이방성 청크 렌더링 우선순위 및 서버 예측 생성 최적화
+## 🧭 공식 기술 문서에 오신 것을 환영합니다
 
-You Run Fast, Render That First 는 고속 이동 시 발생하는 청크 팝인과 허공의 벽을 제거하기 위해 설계된 고성능 Fabric 최적화 모드입니다.
+**Vanilla Outsider: You Run Fast, Render That First**는 고속 이동 시 발생하는 청크 팝인(pop-in)과 보이드 장벽을 원천 차단하는 초고성능 패브릭 최적화 모드입니다. 클라이언트 청크 렌더 메시 큐와 서버 월드 생성 티켓을 플레이어의 실시간 속도 벡터 ($ec{v}$)와 직접 동기화하여, 플레이어가 날아가거나 질주하는 방향의 지형을 최우선으로 컴파일하고 로드합니다.
+
+```
+                  =============================================
+                  VELOCITY-BIASED ANISOTROPIC CHUNK PIPELINE
+                  =============================================
+
+                                  [ PLAYER ]
+                                      |
+                     Velocity Vector  |  s >= 0.20 b/t
+                                      v
+                 +-----------------------------------------+
+                 |       VelocityCalculator (EMA a=0.65)   |
+                 +-----------------------------------------+
+                                 /         \
+                                /           \
+        (Client Render Meshing)/             \(Server Chunk Tickets)
+                              v               v
+             +---------------------+     +--------------------------+
+             | AnisotropicDistance |     | ForwardTicketManager     |
+             | Helper (Dot Product)|     | (TicketType.             |
+             | Directional Bias)   |     |  PLAYER_LOADING)         |
+             +---------------------+     +--------------------------+
+                        |                             |
+                        v                             v
+             Prioritized Chunk Mesh       Predictive Forward Chunks
+             (Zero Pop-In Ahead)          (Ahead up to 16 Chunks)
+```
 
 ---
 
-## ⚡ 빠르게 달린다면, 그곳을 먼저 렌더링하라 (You Run Fast, Render That First) — 핵심 기능 / 主要特性
+## 🏛️ 마인크래프트 버전 선택
 
-- **이방성 청크 메시 우선순위화**: 방향성 내적 거리 계산으로 진행 경로 앞쪽의 청크를 최우선 컴파일합니다.
-- **서버 예측 청크 생성 콘**: 진행 방향으로 최대 16청크 앞까지 PLAYER_LOADING 티켓을 사전 할당합니다.
-- **동적 게임 규칙 및 명령어**: yourunfast:* 게임 규칙 및 /yourunfast 명령어로 실시간 제어가 가능합니다.
-- **GC 할당 제로 고속 경로**: 렌더링 스레드에서 100% 힙 할당 없는 원시 타입 캐시를 사용합니다.
-
----
-
-## 🏛️ 마인크래프트 버전 선택 포털
-
-| Minecraft Version | Documentation Link | Client Queue Mixin | Minimum Java |
-| :--- | :--- | :--- | :--- |
-| **Minecraft 26.3** | [[👉 Enter MC 26.3 Wiki|26.3-Home]] | `SectionTaskDynamicQueue` | Java 25+ |
-| **Minecraft 26.2** | [[👉 Enter MC 26.2 Wiki|26.2-Home]] | `SectionTaskDynamicQueue` | Java 25+ |
-| **Minecraft 26.1** | [[👉 Enter MC 26.1 Wiki|26.1-Home]] | `CompileTaskDynamicQueue` | Java 25+ |
+| Minecraft Version | Version Tree Link | Engine Lifecycle | Client Queue Mixin | Minimum Java |
+| :--- | :--- | :--- | :--- | :--- |
+| **Minecraft 26.3** | [[👉 Enter MC 26.3 Wiki|ko_kr-26.3-Home]] | **Modern Lead** | `SectionTaskDynamicQueue` | Java 25+ |
+| **Minecraft 26.2** | [[👉 Enter MC 26.2 Wiki|ko_kr-26.2-Home]] | **Modern Predecessor** | `SectionTaskDynamicQueue` | Java 25+ |
+| **Minecraft 26.1** | [[👉 Enter MC 26.1 Wiki|ko_kr-26.1-Home]] | **Modern Anchor (26.1.2)** | `CompileTaskDynamicQueue` | Java 25+ |
 
 ---
 
-## 🔗 기술 개요
-- [[기술 개요|ko_kr-Overview]]
-- [[English Documentation Portal|Home]]
+## ⚡ 핵심 엔지니어링 서브시스템
+
+- **[[Anisotropic Chunk Prioritization|ko_kr-26.3-Anisotropic-Prioritization]]**
+- **[[Server Chunk Generation Biasing & Watchdog|ko_kr-26.3-Chunk-Generation-Biasing]]**
+- **[[Dynamic GameRules & Brigadier Commands|ko_kr-26.3-Configuration-and-GameRules]]**
+- **[[Zero-GC High-Frequency Hot Path|ko_kr-26.3-Architecture-and-Mixins]]**
+
+---
+
+> ☕ *1인 개발자 노트*: 겉날개 활공이나 말 탑승 시 이동 방향 지형이 즉시 매끄럽게 렌더링되는 경험이 마음에 드셨다면, [Ko-fi](https://ko-fi.com/dasikigaijin)에서 개발을 응원해 주세요!
+
+---
+
+## 🛠️ 개발자 및 환경 문서
+
+- [[Version Compatibility Matrix|ko_kr-Version-Compatibility]]
+- [[Developer Setup & Building|ko_kr-Developer-Setup-and-Building]]
