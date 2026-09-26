@@ -1,8 +1,12 @@
 # 🎛️ Master Release Queue: Vanilla Outsider — You Run Fast, Render That First
 
+> [!WARNING]
+> **DISCONTINUED & SUPERSEDED**: This project has been discontinued and superseded by **Velocity Render** (`velocity-render`).
+> All active development, modernized architecture, and platform listings migrate to `Vanilla Outsider Collections/Velocity Render/`.
+
 > **Mod Project Master Ground-Truth Document**  
-> *Last Synchronized: 2026-09-01*  
-> **Modrinth ID**: `yBO3F5aQ` | **CurseForge ID**: `you-run-fast-render-that-first` | **Lead SemVer**: `1.0.6`
+> *Last Synchronized: 2026-09-18*  
+> **Modrinth ID**: `yB03F5aQ` (Rejected/Discontinued) | **Status**: ⏹️ Discontinued / Rebranded
 
 ---
 
