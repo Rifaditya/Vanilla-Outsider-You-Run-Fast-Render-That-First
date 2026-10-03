@@ -1,0 +1,70 @@
+# Changelog: Vanilla Outsider — You Run Fast, Render That First (MC 26.2)
+
+## [1.0.6+26.2] - 2026-08-19
+
+### Fixed
+- Fixed client render frame crash (`InjectionError: Critical injection failure`) by correcting method descriptor to `BlockPos.distToCenterSqr(Position)` matching vanilla bytecode.
+
+---
+
+## [1.0.5+26.2] - 2026-08-19 [BROKEN / CRASHED ON CLIENT RENDER]
+
+> **Post-Mortem**: Crashed on client render frame with `InjectionError: Critical injection failure in SectionTaskDynamicQueueMixin (0/1 succeeded, scanned 0 targets)` due to descriptor mismatch. Superseded by `1.0.6+26.2`.
+
+### Fixed
+- Fixed client render frame crash (`InjectionError: Critical injection failure`) by correcting `@Redirect` opcode target to `Vec3i.distToCenterSqr` (the bytecode declaring class).
+
+---
+
+## [1.0.4+26.2] - 2026-08-19 [BROKEN / CRASHED ON CLIENT RENDER]
+
+> **Post-Mortem**: Crashed on client render frame with `InjectionError: Critical injection failure in SectionTaskDynamicQueueMixin (0/1 succeeded, scanned 0 targets)` targeting `BlockPos.distToCenterSqr` instead of declaring class `Vec3i.distToCenterSqr`. Superseded by `1.0.5+26.2`.
+
+### Fixed
+- Fixed runtime server tick crash (`IllegalStateException: Registry is already frozen`) by replacing dynamic `TicketType` registry registration with vanilla's built-in `TicketType.PLAYER_LOADING`.
+
+---
+
+## [1.0.3+26.2] - 2026-08-19 [BROKEN / CRASHED ON STARTUP]
+
+> **Post-Mortem**: Crashed on server tick with `IllegalStateException: Registry is already frozen (trying to add key ResourceKey[minecraft:ticket_type / minecraft:forward_prediction])`. Superseded by `1.0.4+26.2`.
+
+### Fixed
+- Fixed critical startup crash (`IllegalClassLoadError`) caused by top-level mixin package definition claiming entrypoint classes; properly scoped mixin package to `net.vanillaoutsider.yourunfast.client.mixin`.
+
+---
+
+## [1.0.2+26.2] - 2026-08-19 [BROKEN / CRASHED ON STARTUP]
+
+> **Post-Mortem**: Crashed on game initialization with `IllegalClassLoadError: YouRunFastMod is in a defined mixin package net.vanillaoutsider.yourunfast.*`. Superseded by `1.0.3+26.2`.
+
+### Changed
+- Integrated real code dependency on `DasikLibrary` (`net.dasik.social:dasik-library:>=1.8.0`).
+- Migrated GameRule category registration and dynamic builder declarations to `DynamicGameRuleManager`.
+- Standardized gamerule value getters and percentage scaling calculations via `DynamicGameRuleManager.getPct`.
+
+---
+
+## [1.0.1+26.2] - 2026-08-18
+
+### Changed
+- Refactored server-side `ForwardTicketManager` to use `LongOpenHashSet` with primitive 64-bit packed chunk coordinates (`ChunkPos.pack`), achieving zero GC allocations during flight.
+- Added Automatic Dynamic MSPT Watchdog continuously tapering forward lead reach under heavy server load to maintain 20 TPS.
+- Added Mach Speed Lateral Fan-Out cone expansion ($\pm 1$ chunk width at $> 16\text{ m/s}$) for smooth banked turns and flight maneuvering.
+- Added Hybrid Spatial & Angular update throttling (re-evaluating on chunk crossings, turns $> 8^\circ$, or every 10 ticks).
+- Pre-cached client-side vector calculation state with volatile lock-free reads in `ClientVelocityTracker`.
+- Enhanced `/yourunfast status` command with full engine telemetry (MSPT, dynamic reach, packed tickets, and client bias state).
+- Optimized mod icon assets with deep 128-color quantization.
+
+---
+
+## [1.0.0+26.2] - 2026-08-18
+
+### Added
+- Core implementation of Velocity-Biased Anisotropic Chunk Prioritization for Minecraft 26.2.
+- Client-side `SectionTaskDynamicQueueMixin` hook with directional dot-product distance calculation.
+- Server-side predictive chunk generation ticket manager (`ForwardTicketManager`) using non-ticking `TicketType.FLAG_LOADING`.
+- Adaptive budget manager (`ServerBudgetManager`) for lateral/rear chunk trimming at high speeds.
+- Full Brigadier command suite (`/yourunfast help`, `status`, `get`, `set`, `reset`, `reload`).
+- Namespaced GameRules: `yourunfast:enabled`, `yourunfast:forward_lead_multiplier`, `yourunfast:budget_conservation`, `yourunfast:min_speed_threshold_pct`, `yourunfast:debug_mode`.
+- Zero-dependency `ModVersionGuard` with Knot ClassLoader resolution.

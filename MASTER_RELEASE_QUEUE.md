@@ -15,7 +15,6 @@
 | Target MC | Generational Era | Live on Platforms | Next Queued Version | Status & Cadence Action | Feature Highlights / Notes |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **MC 26.3** | Modern Lead | *(Unreleased)* | `1.0.6+26.3` | 🛠️ **Local Development** | Initial workspace build ready for first public deployment. |
-| **MC 26.2** | Modern Predecessor | *(Unreleased)* | `N/A` | 🛠️ **Local Development** | Initial workspace build ready for first public deployment. |
 | **MC 26.2** | Modern Predecessor | *(Unreleased)* | `1.0.6+26.2` | 🛠️ **Local Development** | Initial workspace build ready for first public deployment. |
 | **MC 26.1** | Modern Predecessor | *(Unreleased)* | `1.0.6+26.1.2` | 🛠️ **Local Development** | Initial workspace build ready for first public deployment. |
 

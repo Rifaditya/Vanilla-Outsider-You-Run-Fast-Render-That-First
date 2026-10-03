@@ -38,6 +38,10 @@
                 "modmenu.donate": "https://ko-fi.com/dasikigaijin",
                 "modmenu.kofi": "https://ko-fi.com/dasikigaijin"
             }
+        },
+        "modrinth": {
+            "projectId": "you-run-fast-render-that-first",
+            "slug": "you-run-fast-render-that-first"
         }
     }
 }
